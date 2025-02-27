@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/data/models/product_model.dart';
+import 'package:namer_app/presentation/pages/product_page.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
@@ -8,7 +9,16 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {print("tap ${product.id}")},
+      onTap: () => {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductPage(
+              id: product.id,
+            ),
+          ),
+        )
+      },
       onDoubleTap: () => {print("double tap ${product.id}")},
       child: Card(
         elevation: 6,

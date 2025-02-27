@@ -15,28 +15,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final ProductRepository productRepository =
-      ProductRepository(ProductApi(ApiClient()));
-
   List<ProductModel> products = [];
-  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    fetchProducts();
-  }
-
-  Future<void> fetchProducts() async {
-    try {
-      final fetchedProducts = await productRepository.getProducts();
-      setState(() {
-        products = fetchedProducts;
-        isLoading = false;
-      });
-    } catch (e) {
-      print("Lỗi: $e");
-    }
   }
 
   @override
