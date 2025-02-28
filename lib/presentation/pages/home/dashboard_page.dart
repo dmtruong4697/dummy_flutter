@@ -9,12 +9,12 @@ import 'package:namer_app/presentation/bloc/product/product_event.dart';
 import 'package:namer_app/presentation/bloc/product/product_state.dart';
 import 'package:namer_app/presentation/widgets/product_card.dart';
 
-class HomePage extends StatefulWidget {
+class DashboardPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _DashboardPageState createState() => _DashboardPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DashboardPageState extends State<DashboardPage> {
   List<ProductModel> products = [];
 
   @override
