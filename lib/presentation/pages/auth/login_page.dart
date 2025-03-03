@@ -23,113 +23,315 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        appBar: AppBar(
-          title: Text("Login"),
-          backgroundColor: Colors.teal,
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Text("Login"),
-              Form(
-                key: _formKey,
+    return GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: Scaffold(
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          body: Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage("assets/background_image/bg2.png"),
+                fit: BoxFit.cover,
+              )),
+              child: SafeArea(
+                  child: Padding(
+                padding: EdgeInsets.all(10),
                 child: Column(
                   children: [
-                    TextFormField(
-                      controller: emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        prefixIcon: Icon(Icons.email),
-                        border: OutlineInputBorder(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      "Login here",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromRGBO(230, 67, 27, 1),
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Vui lòng nhập email";
-                        }
-                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                            .hasMatch(value)) {
-                          return "Email không hợp lệ";
-                        }
-                        return null;
-                      },
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: Text(
+                        "Welcome back, you've been missed!",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
-                      controller: passwordController,
-                      obscureText: _isShowPassword,
-                      decoration: InputDecoration(
-                          labelText: "Mật khẩu",
-                          prefixIcon: Icon(Icons.lock),
-                          border: OutlineInputBorder(),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _isShowPassword = !_isShowPassword;
-                                });
-                              },
-                              icon: Icon(_isShowPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off))),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Vui lòng nhập mật khẩu";
-                        }
-                        if (value.length < 6) {
-                          return "Mật khẩu ít nhất 6 ký tự";
-                        }
-                        return null;
-                      },
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                labelText: "Email",
+                                labelStyle: TextStyle(
+                                  fontSize: 18,
+                                  color: const Color.fromRGBO(125, 123, 122, 1),
+                                ),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                                prefixIcon: Icon(
+                                  Icons.email,
+                                  size: 20,
+                                ),
+                                filled: true,
+                                fillColor:
+                                    const Color.fromRGBO(255, 242, 239, 1),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide.none,
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                        width: 1.5,
+                                        color: const Color.fromRGBO(
+                                            230, 67, 27, 1)))),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Vui lòng nhập email";
+                              }
+                              if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                                  .hasMatch(value)) {
+                                return "Email không hợp lệ";
+                              }
+                              return null;
+                            },
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            controller: passwordController,
+                            obscureText: !_isShowPassword,
+                            decoration: InputDecoration(
+                              labelText: "Mật khẩu",
+                              labelStyle: TextStyle(
+                                fontSize: 18,
+                                color: Color.fromRGBO(125, 123, 122, 1),
+                              ),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                size: 20,
+                              ),
+                              filled: true,
+                              fillColor: Color.fromRGBO(255, 242, 239, 1),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide.none,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  width: 1.5,
+                                  color: Color.fromRGBO(230, 67, 27, 1),
+                                ),
+                              ),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _isShowPassword = !_isShowPassword;
+                                  });
+                                },
+                                icon: Icon(
+                                  _isShowPassword
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Vui lòng nhập mật khẩu";
+                              }
+                              if (value.length < 6) {
+                                return "Mật khẩu ít nhất 6 ký tự";
+                              }
+                              return null;
+                            },
+                          )
+                        ],
+                      ),
                     ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                print("quen mat khau");
+                              },
+                              child: Text(
+                                "Quên mật khẩu?",
+                                style: TextStyle(
+                                  color: Color.fromRGBO(230, 67, 27, 1),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              backgroundColor: Color.fromRGBO(243, 71, 28, 1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              print(emailController.text);
+                              print(passwordController.text);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HomePage(),
+                                ),
+                              );
+                            }
+                          },
+                          child: Text(
+                            "Sign in",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: TextButton(
+                          onPressed: () {
+                            print("sign up");
+                          },
+                          style: ButtonStyle(
+                            overlayColor:
+                                WidgetStateProperty.all(Colors.transparent),
+                          ),
+                          child: Text(
+                            "Create new account",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(97, 95, 95, 1)),
+                          )),
+                    ),
+                    SizedBox(
+                      height: 80,
+                    ),
+                    SizedBox(
+                      child: Text(
+                        "Or continue with",
+                        style: TextStyle(
+                            color: Color.fromRGBO(243, 71, 28, 1),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.6,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 70,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(235, 235, 235, 1),
+                              // border: Border.all(color: Colors.grey, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                print("google");
+                              },
+                              borderRadius: BorderRadius.circular(10),
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  "assets/media/google.png",
+                                  width: 38,
+                                  height: 38,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 70,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(235, 235, 235, 1),
+                              // border: Border.all(color: Colors.grey, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                print("google");
+                              },
+                              borderRadius: BorderRadius.circular(10),
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  "assets/media/facebook.png",
+                                  width: 38,
+                                  height: 38,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 70,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(235, 235, 235, 1),
+                              // border: Border.all(color: Colors.grey, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                print("google");
+                              },
+                              borderRadius: BorderRadius.circular(10),
+                              child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Image.asset(
+                                  "assets/media/apple.png",
+                                  width: 38,
+                                  height: 38,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
-              ),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.amberAccent,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      print(emailController.text);
-                      print(passwordController.text);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );
-                    }
-                  },
-                  child: Text("LOGIN")),
-              DropdownButtonFormField<String>(
-                value: selectedValue,
-                hint: Text("Chọn trái cây"),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                items: items.map((String item) {
-                  return DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(item),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedValue = newValue;
-                  });
-                },
-              ),
-            ],
-          ),
+              ))),
         ));
   }
 }
