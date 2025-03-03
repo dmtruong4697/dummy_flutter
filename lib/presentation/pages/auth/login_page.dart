@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/presentation/pages/auth/signup_page.dart';
 import 'package:namer_app/presentation/pages/home/dashboard_page.dart';
 import 'package:namer_app/presentation/pages/home/home_page.dart';
 
@@ -226,7 +227,11 @@ class _LoginPageState extends State<LoginPage> {
                       width: double.infinity,
                       child: TextButton(
                           onPressed: () {
-                            print("sign up");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignupPage(),
+                                ));
                           },
                           style: ButtonStyle(
                             overlayColor:
