@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/l10n/app_localizations.dart';
 import 'package:namer_app/presentation/pages/auth/signup_page.dart';
 import 'package:namer_app/presentation/pages/home/dashboard_page.dart';
 import 'package:namer_app/presentation/pages/home/home_page.dart';
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 20,
                     ),
                     Text(
-                      "Login here",
+                      AppLocalizations.of(context)!.translate('hello'),
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -204,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                             if (_formKey.currentState!.validate()) {
                               print(emailController.text);
                               print(passwordController.text);
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => HomePage(),

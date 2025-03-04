@@ -1,5 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:namer_app/l10n/app_localizations.dart';
 import 'package:namer_app/presentation/pages/auth/login_page.dart';
 import 'package:namer_app/presentation/pages/home/dashboard_page.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +18,16 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('vi', 'VN'),
+        ],
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
