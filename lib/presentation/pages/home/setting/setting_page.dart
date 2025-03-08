@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:namer_app/presentation/pages/camera/camera_page.dart';
+import 'package:namer_app/presentation/pages/home/setting/general_setting_tab.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -49,8 +51,8 @@ class _SettingPageState extends State<SettingPage> {
               Expanded(
                 child: TabBarView(
                   children: [
-                    Center(child: Text("General Settings")),
-                    Center(child: Text("Account Settings")),
+                    Center(child: GeneralSettingTab()),
+                    Center(child: CameraPage()),
                     Center(child: Text("Privacy Settings")),
                   ],
                 ),

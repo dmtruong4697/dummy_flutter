@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:namer_app/l10n/app_localizations.dart';
 import 'package:namer_app/presentation/pages/auth/login_page.dart';
+import 'package:namer_app/presentation/pages/camera/camera_page.dart';
 import 'package:namer_app/presentation/pages/home/dashboard_page.dart';
 import 'package:provider/provider.dart';
 

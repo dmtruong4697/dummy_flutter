@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/presentation/pages/home/dashboard_page.dart';
-import 'package:namer_app/presentation/pages/home/setting_page.dart';
+import 'package:namer_app/presentation/pages/home/setting/setting_page.dart';
 import 'package:namer_app/presentation/pages/product_page.dart';
 
 class HomePage extends StatefulWidget {
